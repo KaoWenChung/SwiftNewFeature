@@ -1,7 +1,7 @@
-// Task 1: Clamped Number
+// TASK 1: Clamped Number
 // Clamp the score between 0 - 100
 
-// Definition
+// Definition Clamped
 @propertyWrapper
 struct ClampedScore {
     
@@ -18,7 +18,30 @@ struct ClampedScore {
     }
 }
 
+import Foundation
+// TASK 2: Trimmed String
+// Trim white space of string
+
+// Definition
+@propertyWrapper
+struct TrimmedString {
+    private var value: String = ""
+    
+    var wrappedValue: String {
+        get { value }
+        set {
+            value = newValue.trimmingCharacters(in: .whitespaces)
+        }
+    }
+}
+
+//@propertyWrapper
+//struct UnitInterval<Value: FloatingPoint> {
+//    @ClampedScore
+//}
+
 struct Student {
+    @TrimmedString var id: String
     @ClampedScore var score: Int
 }
 
@@ -34,3 +57,7 @@ print(tom.score)
 // Should be 60
 tom.score = 60
 print(tom.score)
+
+// Should be tom12211
+tom.id = "  tom12211 "
+print(tom.id)
