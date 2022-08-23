@@ -1,6 +1,10 @@
 // Resource: https://refactoring.guru/design-patterns/chain-of-responsibility/swift/example
 protocol Handler: AnyObject {
     
+    /*
+     return a hander from here will let us link handlers in a convenient way like this:
+     monkey.setNext(handler: squirrel).setNext(handler: dog)
+     */
     @discardableResult
     func setNext(handler: Handler) -> Handler
 
@@ -75,7 +79,7 @@ class Client {
             print("Client: Who wants a \(item)?")
 
             guard let result = handler.handle(request: item) else {
-                print(item, " was left untouched.")
+                print(item, "was left untouched.")
                 return
             }
             print(result)
