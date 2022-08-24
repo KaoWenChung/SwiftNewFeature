@@ -6,4 +6,3 @@
 //  - Command: An object that encapsulates action
 //  - Receiver: an object acted upon by command
 
-//
