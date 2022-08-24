@@ -24,7 +24,7 @@ func selectionSort(_ arr: [Int]) {
 }
 
 
-func bubleSort(_ input: [Int]) {
+func bubbleSort(_ input: [Int]) {
     let start2 = CFAbsoluteTimeGetCurrent()
     var tempArr: [Int] = input
     var length: Int = input.count
@@ -47,5 +47,5 @@ func bubleSort(_ input: [Int]) {
 }
 
 for _ in 0...10 {
-    bubleSort(testArr)
+    bubbleSort(testArr)
 }
