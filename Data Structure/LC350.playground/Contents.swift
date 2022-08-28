@@ -41,6 +41,18 @@ func intersection(_ a: [Int], _ b: [Int]) {
         }
     }
     print("result", result)
+    /*
+     Solution 2
+     for num in nums1 {
+                 guard !result.contains(num) else { continue }
+                 let nums1Count: Int = nums1.filter{$0 == num}.count
+                 let nums2Count: Int = nums2.filter{$0 == num}.count
+                 if nums1Count == 0 || nums2Count == 0 {
+                     continue
+                 }
+                 result.append(contentsOf: Array(repeating: num, count: nums1Count > nums2Count ? nums2Count : nums1Count))
+             }
+     */
 }
 
 intersection([1,2,2,1], [2,2])
