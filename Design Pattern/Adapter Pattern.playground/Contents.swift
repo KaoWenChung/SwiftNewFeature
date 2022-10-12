@@ -127,34 +127,44 @@ class RegisterService {
 
     func registerIfNeeded(_ tableView: UITableView?, sections: [AdapterSection]) {
         sections.forEach { section in
-            if let header = section.header, !registeredTypes.contains(header.type.name) {
+            registerHeader(tableView, section: section)
+            registerFooter(tableView, section: section)
+            registerItems(tableView, section: section)
+        }
+    }
 
-                if header.type.isSubclass(of: UITableViewHeaderFooterView.self) {
-                    tableView?.register(header.type, forHeaderFooterViewReuseIdentifier: header.type.name)
-                }
+    func registerHeader(_ tableView: UITableView?, section: AdapterSection) {
+        if let header = section.header, !registeredTypes.contains(header.type.name) {
 
-                registeredTypes.insert(header.type.name)
+            if header.type.isSubclass(of: UITableViewHeaderFooterView.self) {
+                tableView?.register(header.type, forHeaderFooterViewReuseIdentifier: header.type.name)
             }
 
-            if let footer = section.footer, !registeredTypes.contains(footer.type.name) {
+            registeredTypes.insert(header.type.name)
+        }
+    }
 
-                if footer.type.isSubclass(of: UITableViewHeaderFooterView.self) {
-                    tableView?.register(footer.type, forHeaderFooterViewReuseIdentifier: footer.type.name)
-                }
+    func registerFooter(_ tableView: UITableView?, section: AdapterSection) {
+        if let footer = section.footer, !registeredTypes.contains(footer.type.name) {
 
-                registeredTypes.insert(footer.type.name)
+            if footer.type.isSubclass(of: UITableViewHeaderFooterView.self) {
+                tableView?.register(footer.type, forHeaderFooterViewReuseIdentifier: footer.type.name)
             }
 
-            section.items.forEach { item in
-                
-                if !registeredTypes.contains(item.type.name) {
+            registeredTypes.insert(footer.type.name)
+        }
+    }
 
-                    if item.type.isSubclass(of: UITableViewCell.self) {
-                        tableView?.register(UINib(nibName: item.type.name, bundle: nil), forCellReuseIdentifier: item.type.name)
-                    }
+    func registerItems(_ tableView: UITableView?, section: AdapterSection) {
+        section.items.forEach { item in
+            
+            if !registeredTypes.contains(item.type.name) {
 
-                    registeredTypes.insert(item.type.name)
+                if item.type.isSubclass(of: UITableViewCell.self) {
+                    tableView?.register(UINib(nibName: item.type.name, bundle: nil), forCellReuseIdentifier: item.type.name)
                 }
+
+                registeredTypes.insert(item.type.name)
             }
         }
     }
