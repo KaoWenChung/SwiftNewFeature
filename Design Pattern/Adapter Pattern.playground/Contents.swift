@@ -3,21 +3,24 @@
 import UIKit
 
 extension UIView {
+    /// show Type as string
     static var name: String {
         return String(describing: self)
     }
 }
 
 protocol TableViewAdapterDelegate: AnyObject {
-
+    /// configure cell view
     func configure(model: AdapterItem, view: UIView, indexPath: IndexPath)
+    /// behavior of select the item
     func select(model: AdapterItem)
+    /// configure the size of cell
     func size(model: AdapterItem, containerSize: CGSize) -> CGSize
 
 }
 // Acting like UITableViewDelegate and UITableViewDataSource
 class TableViewAdapter: NSObject {
-    
+    /// Component for dealing with register things
     let registerService = RegisterService()
     weak var tableView: UITableView?
     weak var delegate: TableViewAdapterDelegate?
@@ -69,6 +72,7 @@ extension TableViewAdapter: UITableViewDelegate {
 
         let item = sections[indexPath.section].items[indexPath.row]
         delegate?.select(model: item)
+        // Improve the press animation
         tableView.deselectRow(at: indexPath, animated: true)
 
     }
