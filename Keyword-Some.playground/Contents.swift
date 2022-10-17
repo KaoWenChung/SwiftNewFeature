@@ -51,3 +51,6 @@ protocol DogFactoryType {
 }
 
 DogFactory.adapt().woof()
+
+let string = ["testtestt", "2","23", "234"]
+print( string[1])
