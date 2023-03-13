@@ -95,3 +95,11 @@ do {
 } catch {
     print("Unexpected error!")
 }
+
+class Node {
+  let data: AnyObject
+  var nextNode: Node?
+  init(data: AnyObject) {
+    self.data = data
+  }
+}

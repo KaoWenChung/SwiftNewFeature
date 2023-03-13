@@ -31,26 +31,21 @@ class ViewController {
 }
 
 class ViewMdoel {
-    private let apiService = Repository()
+
     func fetchData() async throws -> String {
         // throw Error
 //        throw RepositoryError.noData
         // Success
-        let data = try await apiService.fetchData()
+        let data = try await Repository.fetchData()
         return data
     }
 }
 
 class Repository {
-    func fetchData() async throws -> String {
+    class func fetchData() async throws -> String {
         // Mock request time
         sleep(1)
         return "Data"
     }
 }
-
-
-
-
-
 ViewController().viewDidLoad()
