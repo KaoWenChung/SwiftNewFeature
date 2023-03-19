@@ -2,15 +2,13 @@
 // Input numbers: 1-100 , searchNumber: 1 number
 // Out: 1 Number/ null (The index of the searchNumber in the number array)
 
-// Problem-solving by violence
+// Naive solution
 func searchIndex1(_ numbers: [Int], _ searchNumber: Int) -> Int? {
     var minIndex = 0
     var maxIndex = numbers.count - 1
     guard searchNumber <= numbers[maxIndex], searchNumber >= numbers[minIndex] else { return nil }
-    var step = 1
     var middleIndex = numbers.count / 2
     while numbers[middleIndex] != searchNumber {
-        step += 1
         if numbers[middleIndex] > searchNumber {
             maxIndex = middleIndex
         } else if numbers[middleIndex] < searchNumber {
@@ -30,7 +28,7 @@ func searchIndex1(_ numbers: [Int], _ searchNumber: Int) -> Int? {
     return middleIndex
 }
 
-// Best solution
+// Better solution
 func searchIndex2(_ numbers: [Int], _ targetNumber: Int) -> Int? {
     var leftIndex = 0
     var rightIndex = numbers.count - 1
