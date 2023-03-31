@@ -7,7 +7,16 @@ func selectionSort(_ arr: [Int]) -> [Int] {
                 minNumIndex = _index
             }
         }
-        tempArr.swapAt(tempArr[index], tempArr[minNumIndex])
+        tempArr.swapAt(index, minNumIndex)
     }
     return tempArr
 }
+
+let testA = [1,2,3,4,5]
+print("\(testA) =>", selectionSort(testA))
+
+let testB = [5,4,3,2,1]
+print("\(testB) =>", selectionSort(testB))
+
+let testC = [8,4,2,2,1,7]
+print("\(testC) =>", selectionSort(testC))
